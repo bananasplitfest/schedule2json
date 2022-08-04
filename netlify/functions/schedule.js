@@ -117,6 +117,9 @@ exports.handler = async function () {
     return {
         statusCode: 200,
         // body: 'Hello Banana'
+        headers: {
+            "Access-Control-Allow-Origin": "*", // Allow from anywhere 
+        },
         body: JSON.stringify({
             activities: formattedData
         })

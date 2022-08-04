@@ -105,3 +105,5 @@ dist
 
 # MacOS DS_Store file
 .DS_Store
+# Local Netlify folder
+.netlify

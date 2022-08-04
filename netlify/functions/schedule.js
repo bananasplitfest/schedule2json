@@ -12,20 +12,6 @@ function localToUTC(dt) {
     }
 }
 
-function strToBool(s)
-{
-    // will match one and only one of the string 'true','1', or 'on' rerardless
-    // of capitalization and regardless off surrounding white-space.
-    //
-    regex=/^\s*(true|1|on)\s*$/i
-
-    return regex.test(s);
-}
-
-function parseBool(b) {
-    return !(/^(false|0)$/i).test(b) && !!b;
-}
-
 exports.handler = async function () {
     const SCHEDULE_DOC = 'https://opensheet.elk.sh/1YWymQHAIQnXhGOttbI20zflXY0HVfrvQ2yMcTWjtscw/Activities'
     
@@ -39,7 +25,7 @@ exports.handler = async function () {
         activity.title = data[key]?.title ?? false
         activity.start = localToUTC(data[key].start)
         activity.end = localToUTC(data[key].end)
-        activity.resourceId = data[key]?.location ?? "invalid"
+        activity.resourceId = data[key]?.location ?? false
         activity.description = data[key]?.description ?? false
         activity.pre = data[key]?.pre ?? false
         activity.post = data[key]?.post ?? false

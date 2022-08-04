@@ -6,7 +6,7 @@ function localToUTC(dt) {
         timePeriod = datePeriod[1].split(":")
         if ( datePeriod[2] === "PM" && timePeriod[0] !== "12" )
             timePeriod[0] = (parseInt(timePeriod[0]) + 12).toString()
-        return datePeriod[0] + "T" + timePeriod[0] + ":" + timePeriod[1]
+        return datePeriod[0] + "T" + timePeriod[0].padStart(2, '0') + ":" + timePeriod[1].padStart(2, '0')
     } catch (error) {
         return false
     }
@@ -39,7 +39,7 @@ exports.handler = async function () {
         activity.title = data[key]?.title ?? false
         activity.start = localToUTC(data[key].start)
         activity.end = localToUTC(data[key].end)
-        activity.resourceId = data[key]?.location ?? false
+        activity.resourceId = data[key]?.location ?? "invalid"
         activity.description = data[key]?.description ?? false
         activity.pre = data[key]?.pre ?? false
         activity.post = data[key]?.post ?? false

@@ -4,7 +4,7 @@ function localToUTC(dt) {
     try {
         datePeriod = dt.split(" ")
         timePeriod = datePeriod[1].split(":")
-        if ( datePeriod[2] === "PM" )
+        if ( datePeriod[2] === "PM" && timePeriod[0] !== "12" )
             timePeriod[0] = (parseInt(timePeriod[0]) + 12).toString()
         return datePeriod[0] + "T" + timePeriod[0] + ":" + timePeriod[1]
     } catch (error) {

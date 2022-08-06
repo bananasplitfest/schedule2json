@@ -31,6 +31,7 @@ exports.handler = async function () {
         activity.post = data[key]?.post ?? false
         activity.highlight = data[key]?.highlight ?? false
         activity.entertainer = data[key]?.isEntertainer ?? false
+        activity.hidden = data[key]?.isHidden ?? false
         activity.activity = data[key]?.isActivity ?? false
         activity.link = data[key]?.link ?? false
         activity.genre = data[key]?.genre ?? false
